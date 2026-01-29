@@ -21,13 +21,12 @@ body {
 }
 
 /* overlay */
-.overlay {
-  backdrop-filter: blur(8px);
+.overlay.overlay {
   position: relative;
-  z-index: 1;
   min-height: 100vh;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.05); /* əvvəl 0.9 idi, indi 0.05 oldu */
+  backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.25); /* ÇOX vacib: 0.25-dən yuxarı ETMƏ */
 }
 
 /* HEADER */
