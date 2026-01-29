@@ -13,7 +13,11 @@
     <h1>Endless Community Score</h1>
     <p>Measure your engagement in the Endless ecosystem</p>
   </header>
-
+<nav class="menu">
+  <button class="menu-btn active" onclick="openTab('profile', this)">Profile</button>
+  <button class="menu-btn" onclick="openTab('tasks', this)">Tasks</button>
+  <button class="menu-btn" onclick="openTab('leaderboard', this)">Leaderboard</button>
+</nav>
   <!-- PROFILE SECTION -->
   <section class="section" id="profile">
     <div class="profile-card">
@@ -58,7 +62,10 @@
       <button class="submit-btn" onclick="submitTask(4)">Submit</button>
     </div>
   </section>
-
+<section class="section hidden" id="leaderboard">
+  <h2 class="section-title">Leaderboard</h2>
+  <div class="leaderboard-blur">Coming Soon</div>
+</section>
   <!-- FOOTER -->
   <footer>
     Made by Sa1 · Endless Community Prototype
