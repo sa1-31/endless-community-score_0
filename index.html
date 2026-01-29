@@ -1,113 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Endless Community Score</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endless Community Score</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- BACKGROUND IMAGE WITH BLUR -->
+<div class="background"></div>
+<div class="overlay">
+
   <!-- HEADER -->
   <header class="header">
+    <img src="endless-logo.png" alt="Endless Logo" class="header-logo" />
     <h1>Endless Community Score</h1>
-    <p>Measure your engagement in the Endless ecosystem</p>
+    <p>Ship, check score, and join the leaderboard!</p>
   </header>
 
   <!-- MENU -->
-  <nav class="menu">
-    <button class="menu-btn active" onclick="openTab('profile', this)">Profile</button>
+  <div class="menu">
+    <button class="menu-btn active" onclick="openTab('profileSection', this)">Profile</button>
     <button class="menu-btn" onclick="openTab('checkScore', this)">Check Score</button>
-    <button class="menu-btn" onclick="openTab('tasks', this)">Tasks</button>
-    <button class="menu-btn" onclick="openTab('leaderboard', this)">Leaderboard</button>
-  </nav>
+    <button class="menu-btn" onclick="openTab('tasksSection', this)">Tasks</button>
+    <button class="menu-btn" onclick="openTab('leaderboardSection', this)">Leaderboard</button>
+  </div>
 
   <!-- PROFILE SECTION -->
-  <section class="section" id="profile">
- <div class="profile-card">
-  <div class="avatar">
-    <img src="endless-logo.png" alt="Endless Logo" class="avatar-logo" />
-  </div>
+  <section id="profileSection" class="section">
+    <div class="profile-card">
+      <div class="avatar">
+        <img src="endless-logo.png" alt="Endless Logo" class="avatar-logo" />
+      </div>
 
-  <div class="nick-container">
-    <span id="displayName">Anonymous</span>
-    <input type="text" id="userNameInput" class="hidden" placeholder="Enter your name" />
-    <button id="changeNickBtn" class="nick-btn">Change Nick</button>
-  </div>
+      <div class="nick-container">
+        <span id="displayName">Anonymous</span>
+        <input type="text" id="userNameInput" class="hidden" placeholder="Enter your name" />
+        <button id="changeNickBtn" class="nick-btn">Change Nick</button>
+      </div>
 
-  <div class="connect-buttons">
-    <button class="connect-btn">Connect Wallet</button>
-    <button class="connect-btn">Connect Discord</button>
-    <button class="connect-btn">Connect Twitter</button>
-  </div>
- </div>
+      <div class="connect-buttons">
+        <button class="connect-btn">Connect Wallet</button>
+        <button class="connect-btn">Connect Discord</button>
+        <button class="connect-btn">Connect Twitter</button>
+      </div>
+    </div>
   </section>
 
   <!-- CHECK SCORE SECTION -->
-  <section class="section hidden" id="checkScore">
+  <section id="checkScore" class="section hidden">
     <div class="profile-card">
-      <h2>Check Your Score</h2>
-      <p class="muted">Enter your info to see your community score</p>
+      <h2>Enter Your Details</h2>
+      <input type="text" id="twitterInput" placeholder="Twitter Handle" />
+      <input type="text" id="luffaInput" placeholder="Luffa UID" />
+      <input type="text" id="edsInput" placeholder="EDS Wallet" />
+      <input type="text" id="discordInput" placeholder="Discord Name" />
 
-      <input id="twitterInput" placeholder="Twitter username" />
-      <input id="luffaInput" placeholder="Luffa UID" />
-      <input id="edsInput" placeholder="EDS Wallet address" />
-      <input id="discordInput" placeholder="Discord username" />
-
-      <button class="submit-btn" onclick="calculateScore()">Check Score</button>
-
-      <div class="score" id="checkScoreValue">0</div>
+      <button class="submit-btn" onclick="calculateScore()">Calculate Score</button>
+      <p>Your Score: <span id="checkScoreValue" class="hidden">0</span></p>
     </div>
   </section>
 
   <!-- TASKS SECTION -->
-  <section class="section hidden" id="tasks">
-    <h2 class="section-title">Community Tasks</h2>
-
+  <section id="tasksSection" class="section hidden">
     <div class="task-card">
-      <h3>Share Endless Post</h3>
-      <input id="task1Input" placeholder="Paste tweet link" />
+      <h3>Task 1: Share post and tag Endless</h3>
+      <input type="text" id="task1Input" placeholder="Paste link here" />
       <button class="submit-btn" onclick="submitTask(1)">Submit</button>
     </div>
-
     <div class="task-card">
-      <h3>Join Endless Discord</h3>
-      <input id="task2Input" placeholder="Discord username" />
+      <h3>Task 2: Invite a friend</h3>
+      <input type="text" id="task2Input" placeholder="Friend's username" />
       <button class="submit-btn" onclick="submitTask(2)">Submit</button>
     </div>
-
     <div class="task-card">
-      <h3>Use Luffa</h3>
-      <input id="task3Input" placeholder="Luffa UID" />
+      <h3>Task 3: Post on Twitter</h3>
+      <input type="text" id="task3Input" placeholder="Link to your post" />
       <button class="submit-btn" onclick="submitTask(3)">Submit</button>
     </div>
-
     <div class="task-card">
-      <h3>Share Your Project</h3>
-      <input id="task4Input" placeholder="GitHub / Demo link" />
+      <h3>Task 4: Connect Luffa</h3>
+      <input type="text" id="task4Input" placeholder="Luffa UID" />
       <button class="submit-btn" onclick="submitTask(4)">Submit</button>
     </div>
   </section>
 
   <!-- LEADERBOARD SECTION -->
-  <section class="section hidden" id="leaderboard">
-    <h2 class="section-title">Leaderboard</h2>
+  <section id="leaderboardSection" class="section hidden">
     <div class="leaderboard-card">
+      <h2>Leaderboard</h2>
       <div class="leaderboard-entry" id="userEntry">
-        <!-- yeni score buraya əlavə olunacaq -->
+        Coming Soon...
       </div>
-      <div class="leaderboard-entry coming-soon">Coming Soon</div>
-      <div class="leaderboard-entry coming-soon">Coming Soon</div>
-      <div class="leaderboard-entry coming-soon">Coming Soon</div>
-      <div class="leaderboard-entry coming-soon">Coming Soon</div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    Made by Sa1 · Endless Community Prototype
+    Made by Sa1
   </footer>
 
-  <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
