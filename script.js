@@ -4,24 +4,36 @@ const leaderboardEntries = [];
 const completedTasks = {};
 let totalScore = 0;
 
+// PROFILE ELEMENTS
 const displayName = document.getElementById("displayName");
 const nameInput = document.getElementById("userNameInput");
 const changeNickBtn = document.getElementById("changeNickBtn");
 
+let editing = false;
+
 changeNickBtn.addEventListener("click", () => {
-  if (changeNickBtn.innerText === "Change Nick") {
+  if (!editing) {
+    // Start editing
     nameInput.value = userName;
     nameInput.classList.remove("hidden");
+    nameInput.removeAttribute("readonly"); // input indi yazıla bilir
     displayName.classList.add("hidden");
     nameInput.focus();
     changeNickBtn.innerText = "Submit";
+    editing = true;
   } else {
+    // Submit new name
     userName = nameInput.value.trim() || "Anonymous";
     displayName.innerText = userName;
-    nameInput.classList.add("hidden");
     displayName.classList.remove("hidden");
+    nameInput.classList.add("hidden");
+    nameInput.setAttribute("readonly", true);
     changeNickBtn.innerText = "Change Nick";
-    updateLeaderboard();
+    editing = false;
+
+    // Update leaderboard
+    const leaderboard = document.getElementById("userEntry");
+    leaderboard.innerHTML = `${userName} · ${totalScore} points`;
   }
 });
 
