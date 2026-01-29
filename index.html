@@ -24,18 +24,23 @@
 
   <!-- PROFILE SECTION -->
   <section class="section" id="profile">
-    <div class="profile-card">
-      <div class="avatar">
-  <img src="endless-logo.png" alt="Endless Logo" class="avatar-logo" />
-      </div>
-      <h2>Sa1</h2>
-      <p class="muted">Profile</p>
-      <div class="connect-buttons">
-        <button class="connect-btn">Connect Wallet</button>
-        <button class="connect-btn">Connect Discord</button>
-        <button class="connect-btn">Connect Twitter</button>
-      </div>
-    </div>
+ <div class="profile-card">
+  <div class="avatar">
+    <img src="endless-logo.png" alt="Endless Logo" class="avatar-logo" />
+  </div>
+
+  <div class="nick-container">
+    <span id="displayName">Anonymous</span>
+    <input type="text" id="userNameInput" class="hidden" placeholder="Enter your name" />
+    <button id="changeNickBtn" class="nick-btn">Change Nick</button>
+  </div>
+
+  <div class="connect-buttons">
+    <button class="connect-btn">Connect Wallet</button>
+    <button class="connect-btn">Connect Discord</button>
+    <button class="connect-btn">Connect Twitter</button>
+  </div>
+ </div>
   </section>
 
   <!-- CHECK SCORE SECTION -->
