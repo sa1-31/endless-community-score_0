@@ -1,7 +1,49 @@
-let totalScore = 0;
-const completedTasks = {};
+// DYNAMIC USERNAME
+let userName = "Anonymous";
 const leaderboardEntries = [];
+const completedTasks = {};
+let totalScore = 0;
 
+const displayName = document.getElementById("displayName");
+const nameInput = document.getElementById("userNameInput");
+const changeNickBtn = document.getElementById("changeNickBtn");
+
+changeNickBtn.addEventListener("click", () => {
+  if (changeNickBtn.innerText === "Change Nick") {
+    // Show input
+    nameInput.value = userName;
+    nameInput.classList.remove("hidden");
+    displayName.classList.add("hidden");
+    changeNickBtn.innerText = "Submit";
+  } else {
+    // Submit
+    userName = nameInput.value.trim() || "Anonymous";
+    displayName.innerText = userName;
+    nameInput.classList.add("hidden");
+    displayName.classList.remove("hidden");
+    changeNickBtn.innerText = "Change Nick";
+
+    // Update leaderboard
+    const leaderboard = document.getElementById("userEntry");
+    leaderboard.innerHTML = `${userName} · ${totalScore} points`;
+  }
+});
+
+// MENU / TAB LOGIC
+function openTab(tabId, button) {
+  document.querySelectorAll(".section").forEach(sec => {
+    sec.classList.add("hidden");
+  });
+
+  document.querySelectorAll(".menu-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.getElementById(tabId).classList.remove("hidden");
+  button.classList.add("active");
+}
+
+// UPDATE SCORE FROM TASKS
 function submitTask(taskId) {
   const input = document.getElementById(`task${taskId}Input`);
   const button = input.nextElementSibling;
@@ -21,13 +63,10 @@ function submitTask(taskId) {
   input.disabled = true;
 
   updateScore();
-  updateLeaderboard("Sa1", totalScore);
+  updateLeaderboard();
 }
 
-function updateScore() {
-  document.getElementById("scoreValue").innerText = totalScore;
-}
-
+// UPDATE CHECK SCORE
 function calculateScore() {
   const twitter = document.getElementById("twitterInput").value.trim();
   const luffa = document.getElementById("luffaInput").value.trim();
@@ -41,25 +80,13 @@ function calculateScore() {
   if (discord) score += 25;
 
   document.getElementById("checkScoreValue").innerText = score;
-  updateLeaderboard("Sa1", score);
+  totalScore = score;
+
+  updateLeaderboard();
 }
 
-// MENU / TAB LOGIC
-function openTab(tabId, button) {
-  document.querySelectorAll(".section").forEach(sec => {
-    sec.classList.add("hidden");
-  });
-
-  document.querySelectorAll(".menu-btn").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  document.getElementById(tabId).classList.remove("hidden");
-  button.classList.add("active");
-}
-
-// UPDATE LEADERBOARD
-function updateLeaderboard(name, score) {
+// LEADERBOARD
+function updateLeaderboard() {
   const leaderboard = document.getElementById("userEntry");
-  leaderboard.innerHTML = `${name} · ${score} points`;
+  leaderboard.innerHTML = `${userName} · ${totalScore} points`;
 }
