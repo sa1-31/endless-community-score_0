@@ -25,20 +25,17 @@ function submitTask(taskId) {
 function updateScore() {
   document.getElementById("scoreValue").innerText = totalScore;
 }
+
+// MENU / TAB LOGIC
 function openTab(tabId, button) {
-  // bütün section-ları gizlət
   document.querySelectorAll(".section").forEach(sec => {
     sec.classList.add("hidden");
   });
 
-  // bütün menu button-lardan active-i sil
   document.querySelectorAll(".menu-btn").forEach(btn => {
     btn.classList.remove("active");
   });
 
-  // seçilən section-u aç
   document.getElementById(tabId).classList.remove("hidden");
-
-  // seçilən button-u aktiv et
   button.classList.add("active");
 }
