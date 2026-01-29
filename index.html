@@ -17,6 +17,7 @@
   <!-- MENU -->
   <nav class="menu">
     <button class="menu-btn active" onclick="openTab('profile', this)">Profile</button>
+    <button class="menu-btn" onclick="openTab('checkScore', this)">Check Score</button>
     <button class="menu-btn" onclick="openTab('tasks', this)">Tasks</button>
     <button class="menu-btn" onclick="openTab('leaderboard', this)">Leaderboard</button>
   </nav>
@@ -26,14 +27,29 @@
     <div class="profile-card">
       <div class="avatar"></div>
       <h2>Sa1</h2>
-      <p class="muted">Community Score</p>
-      <div class="score" id="scoreValue">0</div>
-
+      <p class="muted">Profile</p>
       <div class="connect-buttons">
         <button class="connect-btn">Connect Wallet</button>
         <button class="connect-btn">Connect Discord</button>
         <button class="connect-btn">Connect Twitter</button>
       </div>
+    </div>
+  </section>
+
+  <!-- CHECK SCORE SECTION -->
+  <section class="section hidden" id="checkScore">
+    <div class="profile-card">
+      <h2>Check Your Score</h2>
+      <p class="muted">Enter your info to see your community score</p>
+
+      <input id="twitterInput" placeholder="Twitter username" />
+      <input id="luffaInput" placeholder="Luffa UID" />
+      <input id="edsInput" placeholder="EDS Wallet address" />
+      <input id="discordInput" placeholder="Discord username" />
+
+      <button class="submit-btn" onclick="calculateScore()">Check Score</button>
+
+      <div class="score" id="checkScoreValue">0</div>
     </div>
   </section>
 
@@ -69,7 +85,15 @@
   <!-- LEADERBOARD SECTION -->
   <section class="section hidden" id="leaderboard">
     <h2 class="section-title">Leaderboard</h2>
-    <div class="leaderboard-blur">Coming Soon</div>
+    <div class="leaderboard-card">
+      <div class="leaderboard-entry" id="userEntry">
+        <!-- yeni score buraya əlavə olunacaq -->
+      </div>
+      <div class="leaderboard-entry coming-soon">Coming Soon</div>
+      <div class="leaderboard-entry coming-soon">Coming Soon</div>
+      <div class="leaderboard-entry coming-soon">Coming Soon</div>
+      <div class="leaderboard-entry coming-soon">Coming Soon</div>
+    </div>
   </section>
 
   <!-- FOOTER -->
