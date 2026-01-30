@@ -37,6 +37,7 @@ Complete **4 demo tasks**:
 ---
 
 ## 🚀 Try demo
+Open:https://sa1-31.github.io/endless-community-score_0/
 1. Go to Profile tab
 2. Click Change Nick to set your username
 3. Click Connect Wallet / Discord / Twitter (demo only)
